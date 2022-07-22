@@ -1,0 +1,87 @@
+{% extends "cytology/wrapper.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+
+<h5>{{ object.code}} | Исследование №{{ object.reg }}
+            {% if not object.a_date %}
+            <span class="badge rounded-pill bg-warning text-dark">не завершено</span>
+            {% else %}
+            от {{ object.a_date }}
+            {% endif %}
+</h5>
+<table class="table table-hover table-sm">
+    <tbody>
+    <tr>
+        <td>Отделение:</td><td>{{ object.otdelen}} ({{ object.doctor}})</td>
+    </tr>
+    <tr {% if object.get_age < 16 %} class="table-info" {% endif %}>
+        <td>ПАЦИЕНТ:</td>
+        <td>{{ object.last_name}}
+            {{ object.first_name}}
+            {{ object.middle_name}},
+            {{ object.get_gender }}.,
+
+            {% if object.get_age %}
+            {{ object.get_age }} лет,
+            {% endif %}
+
+            {% if object.p_date %} дата поступления {{ object.p_date|date:"d/m/y" }}.{% endif %}
+        </td>
+    </tr>
+
+    <tr>
+        <td>АДРЕС:</td>
+        <td>
+            {% if object.address %}
+            {{ object.address }}
+            {% else %}
+            <span class="badge rounded-pill bg-warning text-dark">нет данных!</span>
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td>МКБ, диагноз
+            </td>
+        <td>
+            {% if not object.code1 %}
+            <span class="badge rounded-pill bg-warning text-dark">код не указан</span>
+            {% else %}
+            {{ object.code1 }}
+            {% endif %}
+            ({{ object.kl_diag }})</td>
+    </tr>
+    <tr>
+        <td>ОБЪЕКТ:</td><td>{{ object.an_object }}</td>
+    </tr>
+    <tr>
+        <td>ДАТА ВЗЯТ:</td>
+        <td>{{ object.v_date }}</td>
+    </tr>
+    <tr>
+        <td>МАКРО:</td><td>{{ object.macro }} (п/а {{ object.macro_p_a}})</td>
+    </tr>
+    {% if object.micro %}
+    <tr>
+        <td>МИКРО:</td><td>{{ object.micro }}</td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td>ЗАКЛ:</td><td>
+        {% if not object.zakl %}
+            {% bootstrap_alert "Заключение отсутствует." alert_type='warning' %}
+        {% else %}
+            {{ object.zakl }}<br>(п/а: {{ object.p_a}})</td>
+        {% endif %}
+    </tr>
+
+    </tbody>
+
+</table>
+
+{% if object.comment %}
+<p>КОММЕНТ: {{ object.comment}}</p>
+{% endif %}
+
+{% endblock %}

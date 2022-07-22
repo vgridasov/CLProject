@@ -1,0 +1,58 @@
+{% load bootstrap5 %}
+
+
+{% if object_list %}
+
+{% if page_obj.has_other_pages %}
+    {% bootstrap_pagination page_obj size="small" %}
+{% endif %}
+
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+    <thead>
+    <tr class="table-secondary">
+        <th scope="col">Рег.№</th>
+        <th scope="col" style="text-align: center;">Отделение</th>
+        <th scope="col">Дата взят.</th>
+        <th scope="col">Фамилия, инициалы</th>
+        <th scope="col" style="text-align: center;">Пол</th>
+        <th scope="col" style="text-align: center;">Возр.</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for analysis in object_list %}
+
+    <tr {% if analysis.get_age < 16 %} class="table-info" {% endif %}>
+        <td>
+            <a href="/list/{{ analysis.id }}/">
+            {{ analysis.reg }}
+            </a>
+        </td>
+        <td style="text-align: center;">
+            {{ analysis.otdelen }}
+        </td>
+        <td>
+            {{ analysis.v_date|date }}
+        </td>
+        <td>
+            {{ analysis.get_fio }}
+        </td>
+        <td style="text-align: center;">
+            {{ analysis.get_gender }}
+        </td>
+        <td style="text-align: center;">
+            {% if analysis.get_age %}
+            {{ analysis.get_age }}
+            {% else %} -
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+{% else %}
+    <p>К сожалению, записей не найдено.</p>
+{% endif %}
