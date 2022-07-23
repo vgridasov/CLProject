@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.generic.dates import DayArchiveView, \
     YearArchiveView, MonthArchiveView, WeekArchiveView, TodayArchiveView
@@ -21,6 +23,7 @@ class AListView(generic.ListView):
         return Analysis.objects.order_by('-reg')
 
 
+@method_decorator(login_required, name='dispatch')
 class ADetailView(generic.DetailView):
     model = Analysis
 
