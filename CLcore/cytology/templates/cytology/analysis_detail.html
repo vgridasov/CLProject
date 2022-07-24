@@ -70,7 +70,7 @@
     <tr>
         <td>ЗАКЛ:</td><td>
         {% if not object.zakl %}
-            {% bootstrap_alert "Заключение отсутствует." alert_type='warning' %}
+            <span class="badge rounded-pill bg-warning text-dark">нет данных!</span>
         {% else %}
             {{ object.zakl }}<br>(п/а: {{ object.p_a}})</td>
         {% endif %}

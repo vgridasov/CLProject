@@ -2,8 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.generic.dates import DayArchiveView, \
-    YearArchiveView, MonthArchiveView, WeekArchiveView, TodayArchiveView
-
+    YearArchiveView, MonthArchiveView, WeekArchiveView
 from .models import Analysis
 
 
@@ -12,7 +11,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_analysis_list'
 
     def get_queryset(self):
-        """Return the last five analysis."""
+        """ возвращает последние 10 записей """
         return Analysis.objects.order_by('-v_date')[:10]
 
 
@@ -36,7 +35,6 @@ class ADayArchiveView(DayArchiveView):
 class AYearArchiveView(YearArchiveView):
     queryset = Analysis.objects.all()
     date_field = "v_date"
-    week_format = "%W"
 
 
 class AMonthArchiveView(MonthArchiveView):
@@ -47,12 +45,7 @@ class AMonthArchiveView(MonthArchiveView):
 class AWeekArchiveView(WeekArchiveView):
     queryset = Analysis.objects.all()
     date_field = "v_date"
-
-
-class ATodayArchiveView(TodayArchiveView):
-    queryset = Analysis.objects.all()
-    date_field = "v_date"
-    template_name = 'cytology/analysis_archive_today.html'
+    week_format = "%W"
 
 
 class SearchResultsView(generic.ListView):

@@ -6,7 +6,6 @@ app_name = 'cytology'
 
 urlpatterns = [
     path('list/', views.AListView.as_view(), name='list'),
-    path('today/', views.ATodayArchiveView.as_view(), name='archive_today'),
     path('list/<int:pk>/', views.ADetailView.as_view(), name='detail'),
     path('<int:year>/', views.AYearArchiveView.as_view(), name='archive_year'),
     path('<int:year>/<str:month>/', views.AMonthArchiveView.as_view(), name='archive_month'),

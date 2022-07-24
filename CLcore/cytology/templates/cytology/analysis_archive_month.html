@@ -3,7 +3,9 @@
 {% block title %}Список: Исследования - месяц{% endblock %}
 
 {% block content %}
-
+<h6 class="text-muted text-uppercase">
+  <span>Найдено за {{ month|date:'F Y' }} г.:</span>
+</h6>
 {% include 'cytology/object_list.html' %}
 
 {% endblock %}

@@ -1,9 +1,11 @@
 {% extends "cytology/wrapper.html" %}
 
-{% block title %}Список: Исследования - день {% endblock %}
+{% block title %}Список: Исследования - дата {% endblock %}
 
 {% block content %}
-
+<h6 class="text-muted text-uppercase">
+  <span>Найдено за указанную дату:</span>
+</h6>
 {% include 'cytology/object_list.html' %}
 
 {% endblock %}

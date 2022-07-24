@@ -2,8 +2,9 @@
 {% load bootstrap5 %}
 
 {% block content %}
-
-<h1 class="h2">Неделя {{ week|date:'W' }}</h1>
+<h6 class="text-muted text-uppercase">
+  <span>Найдено за указанную неделю (Неделя {{ week|date:'W' }}):</span>
+</h6>
 
 {% include 'cytology/object_list.html' %}
 
