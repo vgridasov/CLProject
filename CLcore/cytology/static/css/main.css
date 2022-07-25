@@ -2,3 +2,17 @@
     color: white;
     background-color: dodgerblue;
 }
+
+@media print {
+
+body {background:#fff; font-size:1em;}
+.noprint {
+		display: none;
+	}
+
+.wrapper {
+		width: auto;
+		margin: 0;
+		padding: 0;
+	}
+}

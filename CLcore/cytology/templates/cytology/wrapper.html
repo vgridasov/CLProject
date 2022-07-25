@@ -9,10 +9,11 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet"  media = "screen, print">
   </head>
   <body>
 
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow noprint">
 
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="{% url 'cytology:home' %}">
     Цит<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="cell" viewBox="0 0 33 30">
@@ -53,8 +54,8 @@
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="position-sticky pt-5">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse noprint">
+      <div class="position-sticky pt-5 noprint">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'cytology:home' %}">
@@ -87,7 +88,7 @@
         <!--h1 class="h2">Исследования</h1-->
       </div>
 
-
+      <div id="content">
       {% block content %}
       <h2>B</h2>
       <div class="table-responsive">
@@ -218,12 +219,13 @@
         </table>
       </div>
       {% endblock %}
-
+      </div>
 
     </main>
   </div>
 </div>
 
+</nav>
 
 {% bootstrap_javascript %}
 
