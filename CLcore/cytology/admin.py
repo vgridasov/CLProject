@@ -81,3 +81,5 @@ class AnalysisAdmin(ImportExportModelAdmin):
 
 
 admin.site.register(Analysis, AnalysisAdmin)
+admin.site.site_title = 'Административная панель - ГИСТОЛОГИЯ'
+admin.site.site_header = 'Административная панель - ГИСТОЛОГИЯ'
