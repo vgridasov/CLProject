@@ -1,18 +1,22 @@
 .username {
-    color: white;
-    background-color: dodgerblue;
+	color: white;
+	background-color: dodgerblue;
 }
 
 @media print {
 
-body {background:#fff; font-size:1em;}
-.noprint {
+	body {
+		background: #fff;
+		font-size: 1em;
+	}
+
+	.noprint {
 		display: none;
 	}
 
-.wrapper {
+	.wrapper {
 		width: auto;
 		margin: 0;
-		padding: 0;
+		padding: 5px;
 	}
 }
