@@ -40,6 +40,8 @@ class AnalysisResource(resources.ModelResource):
 
     class Meta:
         model = Analysis
+        import_id_fields = ('reg',)
+        skip_unchanged = True
 
 
 class AnalysisAdmin(ImportExportModelAdmin):

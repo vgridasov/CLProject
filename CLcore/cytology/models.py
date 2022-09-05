@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Analysis(models.Model):
-    reg = models.PositiveIntegerField(verbose_name='РЕГ', unique=True)  # РЕГ
+    reg = models.PositiveIntegerField(primary_key=True, verbose_name='РЕГ')  # РЕГ
     code = models.CharField(max_length=10, verbose_name='МО')  # CODE
     otdelen = models.CharField(max_length=10, verbose_name='ОТДЕЛЕНИЕ', null=True, blank=True)  # OTDELEN
     last_name = models.CharField(max_length=60, verbose_name='ФАМИЛИЯ', null=True, blank=True)  # ФАМИЛИЯ
